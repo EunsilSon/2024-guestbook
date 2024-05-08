@@ -4,17 +4,21 @@
   font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   background-color: #44546A;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 .main_box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 500px;
   text-align: center;
 }
 
@@ -24,39 +28,42 @@ body {
 }
 
 .info {
-  width: 300px;
-  margin: 50px;
-  display: flex;
-  flex-direction: column;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 
 .info input {
+  width: 300px;
   height: 50px;
-  margin-bottom: 10px;
-  border-color: lightgray;
+  margin: 5px;
   border: 0px;
   border-radius: 30px;
+  box-shadow: 2px 2px 5px #383838;
+  background-color: white;
+  text-align: center;
 }
 
 .info input::placeholder {
-  padding-left: 40px;
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .info_btn {
+  width: 300px;
   height: 45px;
-  margin-top: 20px;
+  margin-top: 50px;
   border: 0px;
   border-radius: 30px;
+  box-shadow: 2px 2px 10px #383838;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
   color: #44546A;
   background-color: #FFFAEB;
-  cursor: pointer;
+  cursor:pointer;
 }
 
 .back_btn {
+  width: 300px;
   height: 45px;
   margin-top: 10px;
   border: solid 2px;
@@ -70,12 +77,12 @@ body {
 
 .sub_menu {
   display: flex;
+  justify-content: center;
 }
 
 .sub_menu li {
   padding: 20px;
   list-style: none;
-  font-weight: bold;
   text-decoration: underline;
   color: #FFFAEB;
   cursor: pointer;

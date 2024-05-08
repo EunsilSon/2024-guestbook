@@ -51,12 +51,13 @@ article {
 
 .user_profile {
   display: flex;
-  justify-content: center
+  width: 600px;
+  justify-content: center;
+  align-items: center;
 }
 
 .user_profile img {
-  height: 150px;
-  margin-top: 10px;
+  height: 100px;
 }
 
 .user_profile_info {
@@ -67,7 +68,7 @@ article {
 #user_name {
   font-size: 30px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #announce {
@@ -93,7 +94,7 @@ article {
 }
 
 .sign_btn button {
-  width: 630px;
+  width: 600px;
   height: 50px;
   margin: 30px 0px 30px 0px;
   border: 0px;
@@ -111,7 +112,7 @@ article {
 }
 
 .book_btn_focus {
-  width: 190px;
+  width: 180px;
   height: 50px;
   margin: 30px 5px 30px 5px;
   border-radius: 5px;
@@ -124,7 +125,7 @@ article {
 }
 
 .book_btn {
-  width: 190px;
+  width: 180px;
   height: 50px;
   margin: 30px 5px 30px 5px;
   border-radius: 5px;
@@ -174,7 +175,6 @@ article {
 }
 
 .search select {
-  height: 35px;
   color: gray;
   border: 1px solid gray;
   border-radius: 3px;
