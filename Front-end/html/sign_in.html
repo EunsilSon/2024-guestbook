@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="../css/sign.css">
+    <link rel="icon" href="../img/favicon.png">
+  </head>
+  <body>
+    <div class="main_box">
+      <header class="book_title" onclick='location.href="sign_in.html"'>
+        Welcome to<br><b>Eunsil's Guest Book !</b>
+      </header>
+      <form id="form" method="GET" action="all_cards.html" submit="return false"></form>
+        <section class="info">
+          <input id="user_name" type="name" name="user_name" placeholder="Username">
+          <input id="user_pw" type="password" placeholder="Password">
+          <button class="info_btn" id="sign_in" type="button" onClick="signIn();">Sign In</button>
+        </section>
+      </form>
+
+      <nav class="sub_menu">
+        <li onClick="location.href='find_id.html'">ID 찾기</a></li>
+        <li onClick="location.href='find_pw.html'">PW 찾기</a></li>
+        <li onClick="location.href='sign_up.html'">회원가입</a></li>
+      </nav>
+    </div>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <script src="../js/sign.js"></script>
+  </body>

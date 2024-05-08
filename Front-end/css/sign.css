@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+body {
+  background-color: #44546A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.book_title {
+  color: #FFFAEB;
+  font-size: 50px;
+}
+
+.info {
+  width: 300px;
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.info input {
+  height: 50px;
+  margin-bottom: 10px;
+  border-color: lightgray;
+  border: 0px;
+  border-radius: 30px;
+}
+
+.info input::placeholder {
+  padding-left: 40px;
+  font-size: 15px;
+}
+
+.info_btn {
+  height: 45px;
+  margin-top: 20px;
+  border: 0px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #44546A;
+  background-color: #FFFAEB;
+  cursor: pointer;
+}
+
+.back_btn {
+  height: 45px;
+  margin-top: 10px;
+  border: solid 2px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #FFFAEB;
+  background-color: #44546A;
+  cursor: pointer;
+}
+
+.sub_menu {
+  display: flex;
+}
+
+.sub_menu li {
+  padding: 20px;
+  list-style: none;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #FFFAEB;
+  cursor: pointer;
+}

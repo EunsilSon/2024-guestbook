@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/book.css">
+    <link rel="stylesheet" href="../css/card.css">
+    <link rel="icon" href="../img/favicon.png">
+  </head>
+  <body onload="getMyCards('next');">
+
+    <article class="main_box">
+      <section class="user_profile">
+        <div class="profile_img">
+          <img src="../img/profile.png" />
+        </div>
+        <div class="user_profile_info">
+          <p id="user_name">Eunsil Son</p>
+          <ul id="card_count">
+            <li>
+              카드
+              <b id="card_total">0</b>
+            </li>
+            <li>
+              확인 완료
+              <b id="card_true">0</b>
+            </li>
+            <li>
+              확인 전
+              <b id="card_false">0</b>
+            </li>
+          </ul>
+          <p class="name">손은실</p>
+          <p>안녕하세요. 방문해주셔서 고맙습니다! 😀</p>
+        </div>
+      </section>
+
+      <nav class="btn_box">
+        <button class="book_btn" onclick="location.href='all_cards.html'">모든 카드</button>
+        <button class="book_btn_focus" onclick="location.href='my_cards.html'">내가 쓴 카드</button>
+        <button class="book_btn" onclick="location.href='card_write.html'">카드 작성</button>
+      </nav>
+
+      <section id="card_list" class="card_list">
+        <div class="card">
+          <div class="card_info">
+            <div class="card_writer">손은실</div>
+          <div class="card_post_date">2000-00-00</div>
+          </div>
+          <div class="card_content">안녕하세요</div>
+          <div style="padding-left: 333px;">
+            <button class="card_button">수정</button>
+            <button class="card_button">삭제</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="page" class="page">
+        <img src="../img/prev_page.png" id="myCardsPagePrev">
+          <p id="myPageCount">0</p>
+          <p style="display: inline;">&nbsp/&nbsp</p>
+          <p id="myPageMax">0</p>
+          <p style="display: inline;">&nbsp페이지</p>
+        <img src="../img/next_page.png" id="myCardsPageNext">
+      </section>
+    </article>
+
+    <footer class="search">
+      <input id="search_content" placeholder="내용으로 검색" />
+      <img src="../img/search.png" id="search_btn">
+    </footer>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/card.js"></script>
+  </body>
+</html>

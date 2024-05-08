@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/book.css">
+    <link rel="stylesheet" href="../css/card.css">
+    <link rel="icon" href="../img/favicon.png">
+  </head>
+  <body onload="setCardInfo();">
+    <article class="main_box">
+      <section class="user_profile">
+        <div class="profile_img">
+          <img src="../img/profile.png" />
+        </div>
+
+        <div class="user_profile_info">
+          <p id="user_name">Eunsil Son</p>
+          <ul id="card_count">
+            <li>
+              카드
+              <b id="card_total">0</b>
+            </li>
+            <li>
+              확인 완료
+              <b id="card_true">0</b>
+            </li>
+            <li>
+              확인 전
+              <b id="card_false">0</b>
+            </li>
+          </ul>
+          <p><b>손은실</b><br>안녕하세요. 방문해주셔서 고맙습니다! 😀</p>
+        </div>
+      </section>
+
+      <nav class="sign_btn">
+        <button onClick="location.href='/html/sign_in.html'">Sign In / Sing Up</button>
+      </nav>
+
+      <section id="announce">
+        <img src="../img/lock.png">
+        <p>로그아웃 상태입니다.<br>카드를 남기시려면 로그인을 해주세요.</p>
+      </section>
+    </article>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/card.js"></script>
+  </body>
+</html>

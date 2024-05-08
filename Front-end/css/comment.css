@@ -1,0 +1,90 @@
+.comment_list {
+  margin-bottom: 30px;
+}
+
+.comment_top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment {
+  width: 550px;
+  height: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 0.5px solid lightgray;
+}
+
+.comment_list .comment img {
+  width: 15px;
+  height: 15px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.comment_writer {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.comment_post_date {
+  font-size: 13px;
+  color: gray;
+  margin-bottom: 5px;
+}
+
+.comment_content {
+  width: 530px;
+  height: 100%;
+  font-size: 15px;
+  resize: none;
+  overflow: hidden;
+  border: 0px;
+  background-color: #FFFAEB;
+}
+
+.comment_write {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment_write textarea {
+  height: 50px;
+  padding: 10px 80px 10px 30px;
+  font-size: 15px;
+  resize: none;
+  border: 3px solid #44546A;
+  background-color: white;
+}
+
+.comment_write textarea::placeholder {
+  padding: 0px 0px 10px 0px;
+  font-size: 16px;
+}
+
+.comment_write button {
+  height: 30px;
+  width: 65px;
+  align-self: center;
+  margin-top: -30px;
+  margin-left: 495px;
+  font-weight: bold;
+  font-size: 15px;
+  border: 0px;
+  background-color: #44546A;
+  color: white;
+  cursor: pointer;
+}
+
+#comment_page_btn {
+  width: 100px;
+  height: 35px;
+  border-radius: 5px;
+  border: 0px;
+  background-color: #44546A;
+  color: #fafafa;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}

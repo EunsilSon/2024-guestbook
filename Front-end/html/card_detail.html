@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/book.css">
+    <link rel="stylesheet" href="../css/card.css">
+    <link rel="stylesheet" href="../css/comment.css">
+    <link rel="icon" href="../img/favicon.png">
+  </head>
+  <body onload = "loadDetailPage();">
+    
+    <article class="main_box">
+      <section id="card_detail" class="card_detail">
+        <div id="card_info" class="card_info">
+          </div>
+      </section>
+      
+      <section class="comment_write">
+        <textarea id="new_comment" placeholder="Write Here !"></textarea>
+        <button id="comment_insert_btn">등록</button>
+      </section>
+
+      <section id="comment_list" class="comment_list">
+      </section>
+
+      <button id="comment_page_btn" onclick="getCommentList();">댓글 더보기</button>
+
+      <footer class="back" onclick="goBack();">
+        <img src="../img/return.png">
+        <p>뒤로가기</p>
+      </footer>
+    </article>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/card.js"></script>
+  </body>
+</html>
