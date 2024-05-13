@@ -1,0 +1,21 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: Guestbook
+    devtools:
+      livereload:
+        enabled: true
+
+  profiles:
+    active: db # 데이터베이스 정보 숨김
+
+  jpa:
+    show-sql: true
+    hibernate:
+      #ddl-auto: create
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
