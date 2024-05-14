@@ -7,7 +7,6 @@ import com.eunsil.guestbook.domain.entity.User;
 import com.eunsil.guestbook.repository.CardRepository;
 import com.eunsil.guestbook.repository.CommentRepository;
 import com.eunsil.guestbook.repository.UserRepository;
-import org.hibernate.type.LongType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
