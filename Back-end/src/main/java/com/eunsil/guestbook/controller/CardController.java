@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-@CrossOrigin(origins = "http://172.20.10.2:8080")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
 public class CardController {
     private CardService cardService;
