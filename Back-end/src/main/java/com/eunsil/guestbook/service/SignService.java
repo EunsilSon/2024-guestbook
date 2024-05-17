@@ -46,20 +46,20 @@ public class SignService {
     }
 
     public String findId(String tel) {
-        User user = userRepository.findUserByTelephone(tel);
-        if () {
-            return "fail";
-        } else {
+        if (userRepository.existsByTelephone(tel)) {
+            User user = userRepository.findUserByTelephone(tel);
             return user.getName();
+        } else {
+            return "fail";
         }
     }
 
     public String findPw(String name, String tel) {
-        User user = userRepository.findPasswordByNameAndTelephone(name, tel);
-        if (user == null) {
-            return "fail";
-        } else {
+        if (userRepository.existsByName(name) && userRepository.existsByTelephone(tel)) {
+            User user = userRepository.findPasswordByNameAndTelephone(name, tel);
             return user.getPassword();
+        } else {
+            return "fail";
         }
     }
 
