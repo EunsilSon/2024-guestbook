@@ -55,7 +55,7 @@ public class SignService {
     }
 
     public String findPw(String name, String tel) {
-        if (userRepository.existsByName(name) && userRepository.existsByTelephone(tel)) {
+        if (userRepository.existsByNameAndTelephone(name, tel)) {
             User user = userRepository.findPasswordByNameAndTelephone(name, tel);
             return user.getPassword();
         } else {
