@@ -27,28 +27,27 @@ public class SignService {
 
     @Transactional
     public String signUp(String name, String pw, String tel) {
-        User user;
-        User username = userRepository.findUserByName(name);
-        User telephone = userRepository.findUserByTelephone(tel);
 
-        if (username != null) {
+        if (userRepository.existsByName(name)) {
             return "Existed Username";
-        } else if (telephone != null) {
-            return "Existed telephone";
-        } else {
-            user = User.builder()
-                    .name(name)
-                    .password(pw)
-                    .telephone(tel)
-                    .build();
-            userRepository.saveAndFlush(user);
-            return "ok";
         }
+
+        if (userRepository.existsByTelephone(tel)) {
+            return "Existed telephone";
+        }
+
+        User user = User.builder()
+                .name(name)
+                .password(pw)
+                .telephone(tel)
+                .build();
+        userRepository.saveAndFlush(user);
+        return "ok";
     }
 
     public String findId(String tel) {
         User user = userRepository.findUserByTelephone(tel);
-        if (user == null) {
+        if () {
             return "fail";
         } else {
             return user.getName();

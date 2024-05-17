@@ -1,9 +1,9 @@
 package com.eunsil.guestbook.domain.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
 import java.util.List;
@@ -13,24 +13,25 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = {"name", "password"}))
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
     @Column(nullable = false)
-    public String name;
+    private String name;
 
     @Column(nullable = false)
-    public String password;
+    private String password;
 
     @Column(nullable = false)
-    public String telephone;
+    private String telephone;
 
     @Column(columnDefinition = "boolean default false")
-    public boolean isAdmin;
+    private boolean isAdmin;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    public List<Card> cardList;
+    private List<Card> cardList;
 }
