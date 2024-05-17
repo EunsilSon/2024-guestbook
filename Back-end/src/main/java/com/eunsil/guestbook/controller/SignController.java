@@ -35,10 +35,10 @@ public class SignController {
         return signService.findId(tel);
     }
 
-    @GetMapping("/pw")
+    @PostMapping("/pw")
     @ResponseBody
-    public String findPw(@RequestParam String name, String tel) {
-        return signService.findPw(name,tel);
+    public String findPw(@RequestBody HashMap<String, String> param) {
+        return signService.findPw(param.get("username"), param.get("telephone"));
     }
 
     @GetMapping("/check")
