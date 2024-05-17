@@ -18,10 +18,10 @@ public class SignService {
     }
 
     public String signIn(String name, String pw) {
-        if (userRepository.findUserByNameAndPassword(name, pw).isEmpty()) {
-            return "fail";
-        } else {
+        if (userRepository.existsByNameAndPassword(name, pw)) {
             return "ok";
+        } else {
+            return "fail";
         }
     }
 
