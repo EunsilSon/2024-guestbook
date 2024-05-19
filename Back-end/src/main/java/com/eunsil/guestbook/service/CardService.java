@@ -72,12 +72,18 @@ public class CardService {
         }
     }
 
+    /**
+     * 카드 삭제
+     * @param cardId 카드 ID
+     * @return 삭제 성공 여부
+     */
     @Transactional
     public String delete(String cardId) {
-        commentRepository.deleteAllByCardId(Long.parseLong(cardId)); // 카드에 달린 댓글 삭제
-        Card card = cardRepository.findById(cardId); // 카드 삭제
-        if (card != null) {
-            cardRepository.deleteById(Long.parseLong(cardId));
+        commentRepository.deleteAllByCardId(Long.valueOf(cardId)); // Card 의 참조키인 Comment 삭제 -> 외래키 제약 조건
+
+        Optional<Card> optionalCard = cardRepository.findById(Long.valueOf(cardId));
+        if (optionalCard.isPresent()) {
+            cardRepository.deleteById(Long.valueOf(cardId));
             return "ok";
         } else {
             return "Not Existed Card";

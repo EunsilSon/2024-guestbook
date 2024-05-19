@@ -41,6 +41,11 @@ public class CardController {
         return cardService.update(param.get("card_id"), param.get("content"));
     }
 
+    /**
+     * 카드 삭제
+     * @param param 카드 ID
+     * @return 삭제 성공 여부
+     */
     @DeleteMapping("/card")
     @ResponseBody
     public String delete(@RequestBody HashMap<String, String> param) {
