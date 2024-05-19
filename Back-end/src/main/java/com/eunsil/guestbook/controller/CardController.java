@@ -53,17 +53,6 @@ public class CardController {
     }
 
     /**
-     * 특정 사용자의 카드 조회
-     * @param page 가져 올 카드 페이지 (5개로 제한)
-     * @param username 사용자 이름
-     * @return CardDTO 리스트
-     */
-    @GetMapping("/card")
-    public List<CardDTO> getCardListByUser(@RequestParam Integer page, String username) {
-        return cardService.getCardListByUser(page, username);
-    }
-
-    /**
      * 카드 검색 (모든 카드 페이지)
      * @param page 가져 올 카드 페이지 (5개로 제한)
      * @param option 검색 옵션 (사용자 이름 또는 카드 내용)
@@ -87,14 +76,30 @@ public class CardController {
         return cardService.search(page, username, content);
     }
 
+    /**
+     * 내가 쓴 카드 조회
+     * @param page 가져 올 카드 페이지 (5개로 제한)
+     * @param username 사용자 이름
+     * @return CardDTO 리스트
+     */
+    @GetMapping("/card")
+    public List<CardDTO> getCardListByUser(@RequestParam Integer page, String username) {
+        return cardService.getCardListByUser(page, username);
+    }
+
+    /**
+     * 모든 카드 조회
+     * @param page 가져 올 카드 페이지 (5개로 제한)
+     * @return CardDTO 리스트
+     */
     @GetMapping("/card/all")
-    public List<CardDTO> getAll(@RequestParam("page") Integer page) {
-        return cardService.getAll(page);
+    public List<CardDTO> getAllCards(@RequestParam("page") Integer page) {
+        return cardService.getAllCards(page);
     }
 
     @GetMapping("/card")
-    public CardDTO getDetail(@RequestParam("id") String cardId) {
-        return cardService.getDetail(cardId);
+    public CardDTO getCardDetail(@RequestParam("id") String cardId) {
+        return cardService.getCardDetail(cardId);
     }
 
     @GetMapping("/card/all_total")

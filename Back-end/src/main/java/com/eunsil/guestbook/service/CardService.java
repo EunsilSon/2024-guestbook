@@ -148,7 +148,7 @@ public class CardService {
     }
 
     /**
-     * 특정 사용자의 카드 조회
+     * 내가 쓴 카드 조회
      * @param page 가져 올 카드 페이지 (5개로 제한)
      * @param username 사용자 이름
      * @return CardDTO 리스트
@@ -171,12 +171,16 @@ public class CardService {
         return cardDTOList;
     }
 
-
-    public List<CardDTO> getAll(Integer page) {
+    /**
+     * 모든 카드 조회
+     * @param page 가져 올 카드 페이지 (5개로 제한)
+     * @return CardDTO 리스트
+     */
+    public List<CardDTO> getAllCards(Integer page) {
         Pageable pageable = PageRequest.of(page, 5, Sort.Direction.DESC, "id");
         List<Card> cardList = cardRepository.findAllByOrderByIdDesc(pageable);
-        List<CardDTO> cardDtoList = new ArrayList<>();
 
+        List<CardDTO> cardDtoList = new ArrayList<>();
         for (Card cards : cardList) {
             CardDTO cardDto = CardDTO.builder()
                     .cardId(cards.getId())
@@ -189,9 +193,8 @@ public class CardService {
         return cardDtoList;
     }
 
-    public CardDTO getDetail(String cardId) {
-        Card card = cardRepository.findById(cardId);
-
+    public CardDTO getCardDetail(String cardId) {
+        Optional<Card> card = cardRepository.findById(Long.valueOf(cardId));
         CardDTO cardDTO = CardDTO.builder()
                 .cardId(card.getId())
                 .name(card.user.getName())
