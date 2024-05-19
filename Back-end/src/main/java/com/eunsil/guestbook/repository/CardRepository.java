@@ -15,7 +15,7 @@ import java.util.Optional;
 @Repository
 public interface CardRepository extends JpaRepository<Card, Long> {
 
-    Optional<Card> findById(Long cardId);
+    Card findAllById(Long cardId);
 
     List<Card> findAllByContentContaining(String content, Pageable pageable);
 

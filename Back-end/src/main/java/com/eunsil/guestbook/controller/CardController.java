@@ -82,7 +82,7 @@ public class CardController {
      * @param username 사용자 이름
      * @return CardDTO 리스트
      */
-    @GetMapping("/card")
+    @GetMapping("/mycards")
     public List<CardDTO> getCardListByUser(@RequestParam Integer page, String username) {
         return cardService.getCardListByUser(page, username);
     }

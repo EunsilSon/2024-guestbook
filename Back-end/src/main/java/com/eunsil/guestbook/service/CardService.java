@@ -6,7 +6,6 @@ import com.eunsil.guestbook.domain.entity.User;
 import com.eunsil.guestbook.repository.CardRepository;
 import com.eunsil.guestbook.repository.CommentRepository;
 import com.eunsil.guestbook.repository.UserRepository;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +17,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CardService {
@@ -60,16 +58,10 @@ public class CardService {
      */
     @Transactional
     public String update(String cardId, String content) {
-        Optional<Card> optionalCard = cardRepository.findById(Long.valueOf(cardId));
-
-        if (optionalCard.isPresent()) {
-            Card card = optionalCard.get();
-            card.setContent(content);
-            cardRepository.saveAndFlush(card);
-            return "ok";
-        } else {
-            return "Not Existed Card";
-        }
+        Card card = cardRepository.findAllById(Long.valueOf(cardId));
+        card.setContent(content);
+        cardRepository.saveAndFlush(card);
+        return "ok";
     }
 
     /**
@@ -80,14 +72,8 @@ public class CardService {
     @Transactional
     public String delete(String cardId) {
         commentRepository.deleteAllByCardId(Long.valueOf(cardId)); // Card 의 참조키인 Comment 삭제 -> 외래키 제약 조건
-
-        Optional<Card> optionalCard = cardRepository.findById(Long.valueOf(cardId));
-        if (optionalCard.isPresent()) {
-            cardRepository.deleteById(Long.valueOf(cardId));
-            return "ok";
-        } else {
-            return "Not Existed Card";
-        }
+        cardRepository.deleteById(Long.valueOf(cardId));
+        return "ok";
     }
 
     /**
@@ -194,10 +180,11 @@ public class CardService {
     }
 
     public CardDTO getCardDetail(String cardId) {
-        Optional<Card> card = cardRepository.findById(Long.valueOf(cardId));
+        Card card = cardRepository.findAllById(Long.valueOf(cardId));
+
         CardDTO cardDTO = CardDTO.builder()
                 .cardId(card.getId())
-                .name(card.user.getName())
+                .name(card.getUser().getName())
                 .content(card.getContent())
                 .postDate(card.getPostDate())
                 .build();

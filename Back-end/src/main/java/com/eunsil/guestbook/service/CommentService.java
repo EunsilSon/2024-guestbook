@@ -41,11 +41,11 @@ public class CommentService {
      */
     @Transactional
     public String insert(String cardId, String name, String content) {
-        Optional<Card> optionalCard = cardRepository.findById(Long.valueOf(cardId));
+        Card card = cardRepository.findAllById(Long.valueOf(cardId));
         User user = userRepository.findUserByName(name);
 
         Comment comment = Comment.builder()
-                .card(optionalCard.get())
+                .card(card)
                 .user(user)
                 .content(content)
                 .postDate(LocalDate.now())
@@ -68,7 +68,7 @@ public class CommentService {
     public List<CommentDTO> get(String cardId, Integer page) {
         Pageable pageable = PageRequest.of(page, 10, Sort.Direction.DESC, "id");
 
-        Card card = cardRepository.findById(cardId);
+        Card card = cardRepository.findAllById(Long.valueOf(cardId));
         List<Comment> commentList = commentRepository.findByCardOrderByIdDesc(card, pageable);
         List<CommentDTO> commentDtoList = new ArrayList<>();
 
