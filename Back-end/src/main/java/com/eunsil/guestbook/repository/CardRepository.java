@@ -17,15 +17,13 @@ public interface CardRepository extends JpaRepository<Card, Long> {
 
     Optional<Card> findById(Long cardId);
 
-    @Query(value = "SELECT * FROM card WHERE content LIKE %:content%", nativeQuery = true)
-    List<Card> findAllByContent(String content, Pageable pageable);
+    List<Card> findAllByContentContaining(String content, Pageable pageable);
 
-    @Query(value = "SELECT * FROM card WHERE user_id = :user AND content LIKE %:content%", nativeQuery = true)
-    List<Card> findAllByUserByContentOrderByIdDesc(String content, User user, Pageable pageable);
-
-    List<Card> findAllByUserOrderByIdDesc(User user);
+    List<Card> findAllByUserAndContentContainingOrderByIdDesc(User user, String content, Pageable pageable);
 
     List<Card> findAllByUserOrderByIdDesc(User user, Pageable pageable);
+
+    List<Card> findAllByUserOrderByIdDesc(User user);
 
     List<Card> findAllByOrderByIdDesc(Pageable pageable);
 

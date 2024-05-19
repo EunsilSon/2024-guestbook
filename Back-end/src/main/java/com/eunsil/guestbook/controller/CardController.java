@@ -52,27 +52,51 @@ public class CardController {
         return cardService.delete(param.get("card_id"));
     }
 
-    @GetMapping("/card/search")
-    @ResponseBody
-    public List<CardDTO> search(@RequestParam Integer page, String location, String option, String username, String content) {
-        return cardService.search(page, location, option, username, content);
+    /**
+     * 특정 사용자의 카드 조회
+     * @param page 가져 올 카드 페이지 (5개로 제한)
+     * @param username 사용자 이름
+     * @return CardDTO 리스트
+     */
+    @GetMapping("/card")
+    public List<CardDTO> getCardListByUser(@RequestParam Integer page, String username) {
+        return cardService.getCardListByUser(page, username);
     }
 
-    @GetMapping("/card/my")
-    public List<CardDTO> getMy(@RequestParam Integer page, String username) {
-        return cardService.getMy(page, username);
+    /**
+     * 카드 검색 (모든 카드 페이지)
+     * @param page 가져 올 카드 페이지 (5개로 제한)
+     * @param option 검색 옵션 (사용자 이름 또는 카드 내용)
+     * @param content 검색할 내용 (사용자 이름 또는 카드의 일부 내용)
+     * @return CardDTO 리스트
+     */
+    @GetMapping("/cards/search")
+    public List<CardDTO> search(@RequestParam Integer page, int option, String content) {
+        return cardService.search(page, option, content);
+    }
+
+    /**
+     * 카드 검색 (내가 쓴 카드 페이지)
+     * @param page 가져 올 카드 페이지 (5개로 제한)
+     * @param username 사용자 이름
+     * @param content 검색할 내용 (카드의 일부 내용)
+     * @return CardDTO 리스트
+     */
+    @GetMapping("/mycards/search")
+    public List<CardDTO> search(@RequestParam Integer page, String username, String content) {
+        return cardService.search(page, username, content);
     }
 
     @GetMapping("/card/all")
     public List<CardDTO> getAll(@RequestParam("page") Integer page) {
         return cardService.getAll(page);
     }
-/*
+
     @GetMapping("/card")
     public CardDTO getDetail(@RequestParam("id") String cardId) {
         return cardService.getDetail(cardId);
     }
-*/
+
     @GetMapping("/card/all_total")
     public int getAllTotal() {
         return cardService.getAllTotal();
@@ -91,5 +115,4 @@ public class CardController {
     public HashMap<String, Long> getCardCount() {
         return cardService.getCardCount();
     }
-
 }
