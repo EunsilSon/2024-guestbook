@@ -179,6 +179,11 @@ public class CardService {
         return cardDtoList;
     }
 
+    /**
+     * 카드 상세 조회
+     * @param cardId 카드 ID
+     * @return 특정 카드의 모든 정보
+     */
     public CardDTO getCardDetail(String cardId) {
         Card card = cardRepository.findAllById(Long.valueOf(cardId));
 
@@ -191,13 +196,22 @@ public class CardService {
         return cardDTO;
     }
 
-    public int getAllTotal() {
+    /**
+     * 모든 카드의 개수 조회
+     * @return 모든 카드의 개수
+     */
+    public int getTotal() {
         return cardRepository.findAll().size();
     }
 
-    public int getMyTotal(String username) {
+    /**
+     * 내가 쓴 카드의 개수 조회
+     * @param username 사용자 이름
+     * @return 내가 쓴 카드의 개수
+     */
+    public int getTotal(String username) {
         User user = userRepository.findUserByName(username);
-        return cardRepository.findAllByUserOrderByIdDesc(user).size();
+        return cardRepository.findAllByUser(user).size();
     }
 
     public String updateStatus(String cardId) {

@@ -23,7 +23,7 @@ public interface CardRepository extends JpaRepository<Card, Long> {
 
     List<Card> findAllByUserOrderByIdDesc(User user, Pageable pageable);
 
-    List<Card> findAllByUserOrderByIdDesc(User user);
+    List<Card> findAllByUser(User user);
 
     List<Card> findAllByOrderByIdDesc(Pageable pageable);
 

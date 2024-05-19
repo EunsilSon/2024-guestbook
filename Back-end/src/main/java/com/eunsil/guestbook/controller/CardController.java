@@ -5,7 +5,6 @@ import com.eunsil.guestbook.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -97,21 +96,34 @@ public class CardController {
         return cardService.getAllCards(page);
     }
 
+    /**
+     * 카드 상세 조회
+     * @param cardId 카드 ID
+     * @return 특정 카드의 모든 정보
+     */
     @GetMapping("/card")
     public CardDTO getCardDetail(@RequestParam("id") String cardId) {
         return cardService.getCardDetail(cardId);
     }
 
+    /**
+     * 모든 카드의 개수 조회
+     * @return 모든 카드의 개수
+     */
     @GetMapping("/card/all_total")
-    public int getAllTotal() {
-        return cardService.getAllTotal();
+    public int getTotal() {
+        return cardService.getTotal();
     }
 
+    /**
+     * 내가 쓴 카드의 개수 조회
+     * @param username 사용자 이름
+     * @return 내가 쓴 카드의 개수
+     */
     @GetMapping("/card/my_total")
-    public int getAllTotal(@RequestParam String username) {
-        return cardService.getMyTotal(username);
+    public int getTotal(@RequestParam String username) {
+        return cardService.getTotal(username);
     }
-
 
     @PatchMapping("/card/status")
     public String updateStatus(@RequestParam("card_id") String cardId) { return cardService.updateStatus(cardId); }
