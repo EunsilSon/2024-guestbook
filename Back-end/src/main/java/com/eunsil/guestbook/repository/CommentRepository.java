@@ -14,7 +14,6 @@ import java.util.List;
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
-
     @Transactional
     void deleteById(Long commentId);
 
@@ -23,6 +22,5 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     List<Comment> findByCardOrderByIdDesc(Card card, Pageable pageable);
 
-    @Query(value = "SELECT * FROM comment WHERE card_id = :cardId", nativeQuery = true)
-    List<Comment> findAllByCardId(String cardId);
+    long countByCardId(Long cardId);
 }

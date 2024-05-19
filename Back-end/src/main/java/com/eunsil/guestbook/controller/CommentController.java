@@ -55,7 +55,7 @@ public class CommentController {
      * @return 댓글 개수
      */
     @GetMapping("/comment/total")
-    public int get(@RequestParam String cardId) {
+    public long get(@RequestParam String cardId) {
         return commentService.get(cardId);
     }
 }

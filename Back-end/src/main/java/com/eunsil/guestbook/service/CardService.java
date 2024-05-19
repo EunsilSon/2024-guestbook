@@ -200,8 +200,8 @@ public class CardService {
      * 모든 카드의 개수 조회
      * @return 모든 카드의 개수
      */
-    public int getTotal() {
-        return cardRepository.findAll().size();
+    public long getTotal() {
+        return cardRepository.count();
     }
 
     /**
@@ -209,9 +209,9 @@ public class CardService {
      * @param username 사용자 이름
      * @return 내가 쓴 카드의 개수
      */
-    public int getTotal(String username) {
+    public long getTotal(String username) {
         User user = userRepository.findUserByName(username);
-        return cardRepository.findAllByUser(user).size();
+        return cardRepository.countByUser(user);
     }
 
     /**
@@ -220,7 +220,7 @@ public class CardService {
      */
     public HashMap<String, Long> getCardCount() {
         HashMap<String, Long> countList = new HashMap<>();
-        countList.put("total", (long) cardRepository.findAll().size());
+        countList.put("total", cardRepository.count());
         countList.put("true", cardRepository.countByStatusTrue());
         countList.put("false", cardRepository.countByStatusFalse());
 

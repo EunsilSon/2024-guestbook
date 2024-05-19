@@ -111,7 +111,7 @@ public class CardController {
      * @return 모든 카드의 개수
      */
     @GetMapping("/card/all_total")
-    public int getTotal() {
+    public long getTotal() {
         return cardService.getTotal();
     }
 
@@ -121,7 +121,7 @@ public class CardController {
      * @return 내가 쓴 카드의 개수
      */
     @GetMapping("/card/my_total")
-    public int getTotal(@RequestParam String username) {
+    public long getTotal(@RequestParam String username) {
         return cardService.getTotal(username);
     }
 

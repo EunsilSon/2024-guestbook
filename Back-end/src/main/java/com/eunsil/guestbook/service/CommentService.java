@@ -95,8 +95,7 @@ public class CommentService {
      * @param cardId 가져올 댓글의 카드 ID
      * @return 댓글 개수
      */
-    public int get(String cardId) {
-        List<Comment> comments = commentRepository.findAllByCardId(cardId);
-        return comments.size();
+    public long get(String cardId) {
+        return commentRepository.countByCardId(Long.valueOf(cardId));
     }
 }

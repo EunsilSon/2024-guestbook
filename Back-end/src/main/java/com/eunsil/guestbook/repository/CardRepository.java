@@ -23,9 +23,9 @@ public interface CardRepository extends JpaRepository<Card, Long> {
 
     List<Card> findAllByUserOrderByIdDesc(User user, Pageable pageable);
 
-    List<Card> findAllByUser(User user);
-
     List<Card> findAllByOrderByIdDesc(Pageable pageable);
+
+    Long countByUser(User user);
 
     Long countByStatusTrue();
 
