@@ -10,12 +10,12 @@ import org.springframework.stereotype.Repository;
 
 import jakarta.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface CardRepository extends JpaRepository<Card, Long> {
 
-    @Query(value = "SELECT * FROM card WHERE id = :id", nativeQuery = true)
-    Card findById(String id);
+    Optional<Card> findById(Long cardId);
 
     @Query(value = "SELECT * FROM card WHERE content LIKE %:content%", nativeQuery = true)
     List<Card> findAllByContent(String content, Pageable pageable);

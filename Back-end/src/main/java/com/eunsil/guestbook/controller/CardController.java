@@ -30,6 +30,11 @@ public class CardController {
         return cardService.insert(param.get("username"), param.get("content"));
     }
 
+    /**
+     * 카드 내용 수정
+     * @param param 카드 ID, 수정할 카드 내용
+     * @return 수정 성공 여부
+     */
     @PatchMapping("/card")
     @ResponseBody
     public String update(@RequestBody HashMap<String, String> param) {
@@ -57,12 +62,12 @@ public class CardController {
     public List<CardDTO> getAll(@RequestParam("page") Integer page) {
         return cardService.getAll(page);
     }
-
+/*
     @GetMapping("/card")
     public CardDTO getDetail(@RequestParam("id") String cardId) {
         return cardService.getDetail(cardId);
     }
-
+*/
     @GetMapping("/card/all_total")
     public int getAllTotal() {
         return cardService.getAllTotal();

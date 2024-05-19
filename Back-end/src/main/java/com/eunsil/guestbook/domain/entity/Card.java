@@ -35,4 +35,5 @@ public class Card {
 
     @OneToMany(mappedBy = "card", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public List<Comment> commentList;
+
 }

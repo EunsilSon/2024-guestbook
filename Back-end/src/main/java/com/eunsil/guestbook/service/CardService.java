@@ -6,6 +6,7 @@ import com.eunsil.guestbook.domain.entity.User;
 import com.eunsil.guestbook.repository.CardRepository;
 import com.eunsil.guestbook.repository.CommentRepository;
 import com.eunsil.guestbook.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +18,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CardService {
@@ -46,14 +48,22 @@ public class CardService {
                 .content(content)
                 .postDate(LocalDate.now())
                 .build();
-        cardRepository.saveAndFlush(card);
+        cardRepository.save(card);
         return true;
     }
 
+    /**
+     * 카드 내용 수정
+     * @param cardId  카드 ID
+     * @param content 수정할 카드 내용
+     * @return 수정 성공 여부
+     */
     @Transactional
-    public String update(String card_id, String content) {
-        Card card = cardRepository.findById(card_id);
-        if (card != null) {
+    public String update(String cardId, String content) {
+        Optional<Card> optionalCard = cardRepository.findById(Long.valueOf(cardId));
+
+        if (optionalCard.isPresent()) {
+            Card card = optionalCard.get();
             card.setContent(content);
             cardRepository.saveAndFlush(card);
             return "ok";
@@ -139,7 +149,7 @@ public class CardService {
         }
         return cardDTOList;
     }
-
+/*
     public CardDTO getDetail(String cardId) {
         Card card = cardRepository.findById(cardId);
 
@@ -150,7 +160,7 @@ public class CardService {
                 .postDate(card.getPostDate())
                 .build();
         return cardDTO;
-    }
+    }*/
 
     public int getAllTotal() {
         return cardRepository.findAll().size();
