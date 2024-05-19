@@ -19,9 +19,14 @@ public class CardController {
         this.cardService = cardService;
     }
 
+    /**
+     * 새 카드 생성
+     * @param param 사용자 ID, 카드 내용
+     * @return 삽입 성공 여부
+     */
     @PostMapping("/card")
     @ResponseBody
-    public String insert(@RequestBody HashMap<String, String> param) {
+    public boolean insert(@RequestBody HashMap<String, String> param) {
         return cardService.insert(param.get("username"), param.get("content"));
     }
 

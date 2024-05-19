@@ -31,8 +31,14 @@ public class CardService {
         this.commentRepository = commentRepository;
     }
 
+    /**
+     * 새 카드 생성
+     * @param name 사용자 ID
+     * @param content 카드 내용
+     * @return 삽입 성공 여부
+     */
     @Transactional
-    public String insert(String name, String content) {
+    public boolean insert(String name, String content) {
         User user = userRepository.findUserByName(name);
 
         Card card = Card.builder()
@@ -41,7 +47,7 @@ public class CardService {
                 .postDate(LocalDate.now())
                 .build();
         cardRepository.saveAndFlush(card);
-        return "ok";
+        return true;
     }
 
     @Transactional
