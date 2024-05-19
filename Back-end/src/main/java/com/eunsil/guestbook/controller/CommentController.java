@@ -19,12 +19,22 @@ public class CommentController {
         this.commentService = commentService;
     }
 
+    /**
+     * 새 댓글 생성
+     * @param param 카드 ID, 사용자 ID, 댓글 내용
+     * @return 생성 성공 여부
+     */
     @PostMapping("/comment")
     @ResponseBody
     public String insert(@RequestBody HashMap<String, String> param) {
         return commentService.insert(param.get("card_id"), param.get("name"), param.get("content"));
     }
 
+    /**
+     * 댓글 삭제
+     * @param param 댓글 ID
+     * @return 삭제 성공 여부
+     */
     @DeleteMapping("/comment")
     @ResponseBody
     public String delete(@RequestBody HashMap<String, String> param) {

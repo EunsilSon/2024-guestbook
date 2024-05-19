@@ -14,10 +14,9 @@ import java.util.List;
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
+
     @Transactional
-    @Modifying
-    @Query(value = "DELETE FROM comment WHERE id = :commentId", nativeQuery = true)
-    void deleteById(String commentId);
+    void deleteById(Long commentId);
 
     @Transactional
     void deleteAllByCardId(Long cardId);

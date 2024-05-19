@@ -17,6 +17,7 @@ import jakarta.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CommentService {
@@ -31,24 +32,36 @@ public class CommentService {
         this.commentRepository = commentRepository;
     }
 
+    /**
+     * 새 댓글 생성
+     * @param cardId 카드 ID
+     * @param name 사용자 ID
+     * @param content 댓글 내용
+     * @return 생성 성공 여부
+     */
     @Transactional
-    public String insert(String card_id, String name, String content) {
-        Card card = cardRepository.findById(card_id); // 댓글 작성한 카드
+    public String insert(String cardId, String name, String content) {
+        Optional<Card> optionalCard = cardRepository.findById(Long.valueOf(cardId));
         User user = userRepository.findUserByName(name);
 
         Comment comment = Comment.builder()
-                .card(card)
+                .card(optionalCard.get())
                 .user(user)
                 .content(content)
                 .postDate(LocalDate.now())
                 .build();
-        commentRepository.saveAndFlush(comment);
+        commentRepository.save(comment);
         return "ok";
     }
 
+    /**
+     * 댓글 삭제
+     * @param commentId 댓글 ID
+     * @return 삭제 성공 여부
+     */
     @Transactional
-    public String delete(String comment_id) {
-        commentRepository.deleteById(comment_id);
+    public String delete(String commentId) {
+        commentRepository.deleteById(Long.valueOf(commentId));
         return "ok";
     }
 
