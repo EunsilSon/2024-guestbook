@@ -17,6 +17,5 @@
       - 기존에 DB에서 데이터를 가져와 비교하는 로직 제거
       - 중복 값을 허용하지 않는 필드의 멤버 변수에 `@UniqueConstraint` 주입
       - 보안성 증가
-  2. **NullPointerException 발생 가능성 감소 및 실행 속도 감소**
-        - 기존에 find 메서드로 객체를 찾아 null과 비교하는 로직을 제거하고 `existsBy` 메서드를 사용해 가독성 증가
-        - 실행 시간 약 60% 감소 (1225ms → 487ms)
+  2. id · pw 찾기 시 `existsBy` 메서드를 사용해 **NullPointerException 발생 가능성 감소**
+        - 기존에 find 메서드로 객체를 찾아 null과 비교하는 로직을 제거해 가독성 증가
