@@ -65,7 +65,13 @@ public class CommentService {
         return "ok";
     }
 
-    public List<CommentDTO> get(String cardId, Integer page) {
+    /**
+     * 댓글 조회
+     * @param page 가져 올 페이지 (5개로 제한)
+     * @param cardId 가져올 댓글의 카드 ID
+     * @return 댓글 리스트
+     */
+    public List<CommentDTO> get(Integer page, String cardId) {
         Pageable pageable = PageRequest.of(page, 10, Sort.Direction.DESC, "id");
 
         Card card = cardRepository.findAllById(Long.valueOf(cardId));
@@ -84,7 +90,12 @@ public class CommentService {
         return commentDtoList;
     }
 
-    public int getCommentTotal(String cardId) {
+    /**
+     * 댓글 개수 조회
+     * @param cardId 가져올 댓글의 카드 ID
+     * @return 댓글 개수
+     */
+    public int get(String cardId) {
         List<Comment> comments = commentRepository.findAllByCardId(cardId);
         return comments.size();
     }
