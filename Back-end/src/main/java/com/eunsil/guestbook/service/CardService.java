@@ -214,20 +214,28 @@ public class CardService {
         return cardRepository.findAllByUser(user).size();
     }
 
-    public String updateStatus(String cardId) {
-        if (cardRepository.updateCardStatusByCardId(cardId) == 1) {
-            return "ok";
-        } else {
-            return "failed";
-        }
-    }
-
+    /**
+     * 카드 현황 표시를 위한 개수 조회
+     * @return 카드 총합, 확인 전 카드, 확인 후 카드 개수를 담은 Map
+     */
     public HashMap<String, Long> getCardCount() {
         HashMap<String, Long> countList = new HashMap<>();
-        countList.put("total", (long)cardRepository.findAll().size());
+        countList.put("total", (long) cardRepository.findAll().size());
         countList.put("true", cardRepository.countByStatusTrue());
         countList.put("false", cardRepository.countByStatusFalse());
 
         return countList;
+    }
+
+    /**
+     * 카드 확인 표시를 위한 카드 상태 변경
+     * @param cardId 카드 ID
+     * @return 상태 변경 성공 여부
+     */
+    public boolean update(String cardId) {
+        Card card = cardRepository.findAllById(Long.valueOf(cardId));
+        card.setStatus(true);
+        cardRepository.save(card);
+        return true;
     }
 }

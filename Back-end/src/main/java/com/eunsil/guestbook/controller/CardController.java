@@ -125,11 +125,21 @@ public class CardController {
         return cardService.getTotal(username);
     }
 
-    @PatchMapping("/card/status")
-    public String updateStatus(@RequestParam("card_id") String cardId) { return cardService.updateStatus(cardId); }
-
+    /**
+     * 카드 현황 표시를 위한 개수 조회
+     * @return 카드 총합, 확인 전 카드, 확인 후 카드 개수를 담은 Map
+     */
     @GetMapping("/card/count")
     public HashMap<String, Long> getCardCount() {
         return cardService.getCardCount();
     }
+
+    /**
+     * 카드 확인 표시를 위한 카드 상태 변경
+     * @param cardId 카드 ID
+     * @return 상태 변경 성공 여부
+     */
+    @PatchMapping("/card/status")
+    public boolean update(@RequestParam("card_id") String cardId) { return cardService.update(cardId); }
+
 }

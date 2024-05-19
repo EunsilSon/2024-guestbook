@@ -27,11 +27,6 @@ public interface CardRepository extends JpaRepository<Card, Long> {
 
     List<Card> findAllByOrderByIdDesc(Pageable pageable);
 
-    @Modifying
-    @Transactional
-    @Query(value = "UPDATE card SET status='1' WHERE id = :cardId", nativeQuery = true)
-    int updateCardStatusByCardId(String cardId);
-
     Long countByStatusTrue();
 
     Long countByStatusFalse();
