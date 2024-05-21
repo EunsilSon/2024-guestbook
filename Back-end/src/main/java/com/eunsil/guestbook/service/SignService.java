@@ -17,6 +17,12 @@ public class SignService {
         this.userRepository = userRepository;
     }
 
+    /**
+     * 로그인
+     * @param name 사용자 이름
+     * @param pw 비밀번호
+     * @return 로그인 성공 여부
+     */
     public String signIn(String name, String pw) {
         if (userRepository.existsByNameAndPassword(name, pw)) {
             return "ok";
@@ -25,6 +31,13 @@ public class SignService {
         }
     }
 
+    /**
+     * 회원 가입
+     * @param name 사용자 이름
+     * @param pw 비밀번호
+     * @param tel 연락처
+     * @return 이름과 비밀번호 중복 값 체크 or 성공 여부
+     */
     @Transactional
     public String signUp(String name, String pw, String tel) {
 
@@ -45,6 +58,11 @@ public class SignService {
         return "ok";
     }
 
+    /**
+     * ID 찾기
+     * @param tel 연락처
+     * @return 찾은 ID or 성공 여부
+     */
     public String findId(String tel) {
         if (userRepository.existsByTelephone(tel)) {
             User user = userRepository.findUserByTelephone(tel);
@@ -54,6 +72,12 @@ public class SignService {
         }
     }
 
+    /**
+     * PW 찾기
+     * @param name 사용자 이름
+     * @param tel 연락처
+     * @return 찾은 PW or 성공 여부
+     */
     public String findPw(String name, String tel) {
         if (userRepository.existsByNameAndTelephone(name, tel)) {
             User user = userRepository.findPasswordByNameAndTelephone(name, tel);
@@ -63,6 +87,11 @@ public class SignService {
         }
     }
 
+    /**
+     * 사용자 권한 체크
+     * @param username 사용자 이름
+     * @return 관리자 권한 소유 여부
+     */
     public String checkUser(String username) {
         User user = userRepository.findUserByName(username);
         if (user.isAdmin()) {
