@@ -23,12 +23,8 @@ public class SignService {
      * @param pw 비밀번호
      * @return 로그인 성공 여부
      */
-    public String signIn(String name, String pw) {
-        if (userRepository.existsByNameAndPassword(name, pw)) {
-            return "ok";
-        } else {
-            return "fail";
-        }
+    public boolean signIn(String name, String pw) {
+        return userRepository.existsByNameAndPassword(name, pw);
     }
 
     /**
@@ -92,12 +88,8 @@ public class SignService {
      * @param username 사용자 이름
      * @return 관리자 권한 소유 여부
      */
-    public String checkUser(String username) {
+    public boolean isAdmin(String username) {
         User user = userRepository.findUserByName(username);
-        if (user.isAdmin()) {
-            return "true";
-        } else {
-            return "false";
-        }
+        return user.isAdmin();
     }
 }

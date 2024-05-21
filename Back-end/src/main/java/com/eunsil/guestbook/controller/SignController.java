@@ -22,7 +22,7 @@ public class SignController {
      * @return 로그인 성공 여부
      */
     @PostMapping("/sign_in")
-    public String signIn(@RequestBody HashMap<String, String> param) {
+    public boolean signIn(@RequestBody HashMap<String, String> param) {
         return signService.signIn(param.get("username"), param.get("password"));
     }
 
@@ -62,7 +62,7 @@ public class SignController {
      * @return 관리자 권한 소유 여부
      */
     @GetMapping("/check")
-    public String check(@RequestParam String username) {
-        return signService.checkUser(username);
+    public boolean checkUser(@RequestParam String username) {
+        return signService.isAdmin(username);
     }
 }
