@@ -11,7 +11,6 @@ import org.mockito.MockitoAnnotations;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 public class SignControllerTest {
@@ -51,14 +50,18 @@ public class SignControllerTest {
     @DisplayName("회원가입_실패")
     public void signUpTestFailure() {
         HashMap<String, String> req = new HashMap<>();
-        req.put("username", "son");
+        req.put("username", "existingUser");
         req.put("password", "12345678");
-        req.put("telephone", "01039008294");
+        req.put("telephone", "01012345678");
 
-        when(signService.signUp("son", "12345678", "01039008294")).thenThrow(RuntimeException.class);
+        // given
+        when(signService.signUp("existingUser", "12345678", "01012345678")).thenReturn("No");
 
-        assertThrows(RuntimeException.class, () -> {
-            signController.signUp(req);
-        });
+        // when
+        String result = signController.signUp(req);
+
+        // then
+        assertEquals("No", result);
+        verify(signService, times(1)).signUp("existingUser", "12345678", "01012345678");
     }
 }
